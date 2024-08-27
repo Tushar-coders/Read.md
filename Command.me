@@ -1,0 +1,135 @@
+class fantasy:
+    def input(self):
+        print("Welcome to fantasy point calculator software")
+        print("----------------------------------------------------------------------------------------")
+        self.name=input("Enter the name of the player : ")
+        self.type=int(input("Enter which points you want to calculate:\n Enter 1 for batting points \n Enter 2 for bowling points \n Enter 3 for fielding points \n Enter 0 for exiting:  "))
+        if(self.type==1):
+            obj=batter()
+            obj.calculate()
+        elif(self.type==2):
+            obj=bowler()
+            obj.calculate()
+        elif(self.type==3):
+            obj=fielder()
+            obj.calculate()
+        elif(self.type==0):
+            print()
+            print("Thank you for using our software\n Have a good day!")
+        else:
+            print("Enter correct Response")
+class batter(fantasy):
+    def calculate(self):
+        print()
+        self.runs=int(input("Enter the number of runs scored by the Batter: "))
+        self.balls=int(input("Enter the number of balls played by the batter: "))
+        self.fours=int(input("Enter the number of boundaries hitted by the Batter: "))
+        self.sixes=int(input("Enter the number of sixes hitted by the Battter: "))
+        self.SR=(self.runs/self.balls)*100
+        self.pp=4
+        if(self.runs==0):
+            self.total=self.pp-2
+        elif(self.runs>0):
+            self.total=self.runs+self.fours+(2*self.sixes)+self.pp
+            if(self.runs>50 and self.runs<100):
+                self.total=self.total+8
+            elif(self.runs>100):
+                self.total=self.total+16
+            if(self.SR>60 and self.SR<70):
+                self.total=self.total-2
+            elif(self.SR>50 and self.SR<60):
+                self.total=self.total-4
+            elif(self.SR<50):
+                self.total=self.total-6
+            elif(self.SR>130 and self.SR<150):
+                self.total=self.total+2
+            elif(self.SR>150 and self.SR<170):
+                self.total=self.total+4
+            elif(self.SR>170):
+                self.total=self.total+6
+        self.display()
+    def display(self):
+        print("----------------------------------------------------------------------------------------------")
+        print("Name of the player: ",obj1.name)
+        print("Total fantasy points Scored by the batter=", self.total)
+        print("-----------------------------------------------------")
+        print("If you want to use the software again??\n Enter 1 for Yes or Enter 0 for No")
+        self.y=int(input("Enter Your Choice:  "))
+        if(self.y==1):
+            reobj=fantasy()
+            reobj.input()
+        elif(self.y==0):
+            print()
+            print("Thank you for using our software\n Have a good day!")
+        else:
+            print("Enter correct Response")
+class bowler(fantasy):
+    def calculate(self):
+        print()
+        self.over=int(input("Enter number of overs bowled by the bowlers: "))
+        self.wkts=int(input("Enter Number of wicktes taken by the bowler: "))
+        self.runc=int(input("Enter runs conceded by the bowler: "))
+        self.ext=int(input("Enter Number of lbw or bowled wickets: "))
+        self.maiden=int(input("Enter no. of madiens bowled by the bowler: "))
+        self.eco=(self.runc/self.over)
+        self.pp=4
+        self.total=self.pp+(self.wkts*25)+(self.ext*8)+(self.maiden*12)
+        if(self.eco>5 and self.eco<6):
+            self.total=self.total+4
+        elif(self.eco<5):
+            self.total=self.total+6
+        elif(self.eco>6 and self.eco<7):
+            self.total=self.total+4
+        elif(self.eco>10 and self.eco<11):
+            self.total=self.total-2
+        elif(self.eco>11 and self.eco<12):
+            self.total=self.total-4
+        elif(self.eco>12):
+            self.total=self.total-6
+        self.display()
+    def display(self):
+        print("----------------------------------------------------------------------------------------------")
+        print("Name of the player: ",obj1.name)
+        print("Total fantasy points Scored by the bowler=", self.total)
+        print("-----------------------------------------------------")
+        print("If you want to use the software again??\n Enter 1 for Yes or Enter 0 for No")
+        self.y=int(input("Enter Your Choice:  "))
+        if(self.y==1):
+            reobj=fantasy()
+            reobj.input()
+        elif(self.y==0):
+            print()
+            print("Thank you for using our software\n Have a good day!")
+        else:
+            print("Enter correct Response")
+class fielder(fantasy):
+    def calculate(self):
+        print()
+        self.catch=int(input("Enter number of catches taken by the bowler: "))
+        self.runout=int(input("Enter number of direct run outs done by the fielder: "))
+        self.runout1=int(input("Enter number of indirect run out done by the fielder: "))
+        self.stump=int(input("Enter the number of stumpings done by the wicket keeper: "))
+        self.total=(self.catch*8)+(self.runout*12)+(self.runout1*6)+(self.stump*12)
+        if(self.catch>3):
+            self.total=self.total+4
+        self.display()
+    def display(self):
+        print("----------------------------------------------------------------------------------------------")
+        print("Name of the player: ",obj1.name)
+        print("Total fantasy points Scored by the fielder=", self.total)
+        print("-----------------------------------------------------")
+        print("If you want to use the software again??\n Enter 1 for Yes or Enter 0 for No")
+        self.y=int(input("Enter Your Choice:  "))
+        if(self.y==1):
+            reobj=fantasy()
+            reobj.input()
+        elif(self.y==0):
+            print()
+            print("Thank you for using our software\n Have a good day!")
+        else:
+            print("Enter correct Response")
+
+
+        
+obj1=fantasy()
+obj1.input()
